@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    background-color: black;
+    min-height: 100%;
+    z-index: 1;
+}
+body {
+    position: relative;
+    font-family: 'Josefin Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100%;
+    color: whitesmoke;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header a img {
+    max-width: 400px;
+    margin: 1vh;
+}
+.navmenu {
+    display: block;
+    background-color: rgb(61, 0, 0);
+    background-image: linear-gradient(to right, rgb(61, 0, 0), black, rgb(61, 0, 0));
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.295);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.295);
+    position: sticky;
+    top: 0;
+}
+.navmenu > div {
+    flex: 0 1 max-content;
+}
+.navmenu a {
+    display: block;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 2vh 1vh;
+    transition: 300ms ease-in;
+}
+.submenu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 20%;
+    background-image: linear-gradient(to right, black, rgb(61, 0, 0));
+    border-left: 1px solid rgb(61, 0, 0);
+    border-right: 1px solid rgb(61, 0, 0);
+    border-bottom: 1px solid rgb(61, 0, 0);
+}
+.submenu-content a {
+    text-align: left;
+    padding-left: 5vh;
+
+}
+.submenu:hover .submenu-content {
+    display: block;
+}
+
+
+.navmenu a:hover {
+    background-color: black;
+    color: red;
+}
+
+section {
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section div {
+    padding: 3vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 2vh;
+}
+section img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+footer {
+    position: sticky;
+    top: 100%;
+    padding: 2vh 0;
+}
+footer p {
+    text-align: center;
+    font-size: 90%;
+    font-variant: small-caps;
+}
+
+
+
+@media (max-width: 767px) {
+    header {
+        justify-content: center;
+    }
+    header a img {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+
+    .navmenu > div {
+        width: 100%;
+    }
+    .submenu-content {
+        background-color: transparent;
+        position: relative;
+        top: 0;
+        width: 100%;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
+    .navmenu a {
+        text-align: left;
+        padding: 2vh;
+        background-color: transparent;
+    }
+    .submenu-content a {
+        padding-left: 5vh;
+    }
+    section {
+        padding: 2vh 0;
+    }
+    section div {
+        height: auto;
+    }
+    section img {
+        max-width: 100%;
+    }
+}
