@@ -14,6 +14,7 @@ body {
     font-size: 100%;
     color: whitesmoke;
     min-height: 100vh;
+    /* handles if there's any bleedover of elements going past the screen: (overflow-x)  */
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -36,6 +37,7 @@ header a img {
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.295);
     border-bottom: 1px solid rgba(255, 255, 255, 0.295);
+    /* position sticky: when it gets to the top the navmenu stays there--> knows where to stay by top 0 */
     position: sticky;
     top: 0;
 }
@@ -75,7 +77,12 @@ header a img {
     background-color: black;
     color: red;
 }
-
+.submenu i {
+    transition: transform 200ms linear;
+}
+.submenu:hover i {
+    transform: rotate(180deg);
+}
 section {
     padding: 2vh;
     display: flex;
@@ -107,8 +114,25 @@ footer p {
     font-size: 90%;
     font-variant: small-caps;
 }
-
-
+.toggle-menu {
+    display: none;
+    /* the z-index value is really high so its always at the top  */
+    z-index: 999;
+    background-color: transparent;
+    width: 25px;
+    /* aspect ratio 1 makes it be the same height and width */
+    aspect-ratio: 1;
+    position: absolute;
+    /* 15px away from left and top */
+    top: 15px;
+    left: 15px;
+    border: none;
+    background-image: url(../images/hamburger.png);
+    /* image gets contained in surface of button */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 @media (max-width: 767px) {
     header {
@@ -119,7 +143,37 @@ footer p {
         margin: 0 auto;
     }
 
-
+    .navmenu{
+        display: none;
+        /* 99 is so we can close the menu still */
+        z-index: 99;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 80%;
+        background-image: linear-gradient(black,maroon);
+        padding-top: 20vh;
+        /* translate x does horizontal axis[-100% means it slides off screen] */
+        transform: translateX(-100%);
+        transition: transform 300ms linear;
+    }
+    .toggle-menu{
+        display: block;
+    }
+    /* if the data visible attribute is true, then we're changing the bg image==> true means mobile meanu is open/visible */
+    .toggle-menu[data-visible="true"]{
+        background-image: url(../images/closemobile.png);
+    }
+    .navmenu[data-visible="true"]{
+        /* the 0% puts it right on the screen; not pushed off at all */
+        transform: translateX(0%);
+    }
+    .navmenu.active {
+        display: block;
+    }
     .navmenu > div {
         width: 100%;
     }
